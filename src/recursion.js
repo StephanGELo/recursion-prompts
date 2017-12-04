@@ -7,6 +7,14 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+	var result;
+	if (n < 0) {
+		return null;
+	}
+	if (n === 0) {
+		return 1;
+	}
+	return n * factorial (n - 1);
 };
 
 // 2. Compute the sum of an array of integers.
@@ -185,7 +193,19 @@ var nestedEvenSum = function(obj) {
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(array) {
+  var result = [];
+  //iterate through array to check each element
+  for (var i = 0; i < array.length; i++) { 
+    if (!Array.isArray(array[i])) { // base case, to push non-array element into result
+      result.push(array[i]);
+	} else {
+	  result = result.concat(flatten(array[i])); // if element is an array
+	}
+  }
+	
+  return result;
 };
+// 
 
 // 31. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {p:1, o:2, t:2, a:1}
