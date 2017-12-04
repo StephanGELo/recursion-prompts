@@ -194,13 +194,13 @@ var nestedEvenSum = function(obj) {
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(array) {
   var result = [];
-  //iterate through array to check each element
+  //iterate through the array to check each element
   for (var i = 0; i < array.length; i++) { 
-    if (!Array.isArray(array[i])) { // base case, to push non-array element into result
+    if (!Array.isArray(array[i])) { // base case, to collect non-array element
       result.push(array[i]);
-	} else {
-	  result = result.concat(flatten(array[i])); // if element is an array
-	}
+	  } else {
+	  result = result.concat(flatten(array[i])); // flatten element if it is an array
+	  }
   }
 	
   return result;
